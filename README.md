@@ -13,7 +13,7 @@ All course material will be posted to GitHub repo [tyhenry/dt_openframeworks_201
 
 
 _Credits:_
-_The content of this course is greatly indebted to [Regina Flores Mir](http://www.reginafloresmir.com/), professor of [AlgoSims2016](https://github.com/reginaflores/AlgoSims2016), my own incredible creative coding professors [Bryan Ma](http://bryan-ma.com/), ([Bernardo Schorr](http://www.bernardoschorr.com/) and [Patricio Gonzalez Vivo](http://patriciogonzalezvivo.com/), as well as the work of [Zach Leiberman](http://sfpc.io/), and countless other contributors to the OpenFrameworks community._  
+_The content of this course is greatly indebted to [Regina Flores Mir](http://www.reginafloresmir.com/), professor of [AlgoSims2016](https://github.com/reginaflores/AlgoSims2016), my own incredible creative coding professors [Bryan Ma](http://bryan-ma.com/), [Bernardo Schorr](http://www.bernardoschorr.com/), and [Patricio Gonzalez Vivo](http://patriciogonzalezvivo.com/), as well as the work of [Zach Leiberman](http://sfpc.io/), and countless other contributors to the OpenFrameworks community._  
 
 
 ## Course Description
@@ -22,11 +22,11 @@ This studio course will cover the fundamentals of creative software development 
 
 Different computational techniques, mathematical and graphical principles, and interactive technologies will be presented throughout the course, and it's up to you to gradually incorporate them into your artistic sketches. 
 
-We will start by reviewing the fundamentals of C++ and Object Oriented Programming. This will be the foundational paradigm we will use to code our projects. We will also cover trigonometric principles to understand the core of physics simulations, building towards the design of complex simulations using multiple forces to see how collective patterns can emerge from individual behavior.
+We will start by reviewing the fundamentals of C++ and Object Oriented Programming. This will be the foundational paradigm we will use to code our projects. We will also cover trigonometric principles to understand the core of physics simulations, building towards the design of complex systems using multiple forces to see how collective patterns can emerge from individual behavior.
 
 In the second half of the semester, we will focus on extending openFrameworks for use with 3rd party tools and community addons.  Specifically we will learn how to integrate computer vision techniques into our applications, enabling us to build software that "sees" and responds to visual stimuli in both 2D and 3D environments.
 
-Students will complete weekly homework assignments. In addition, students will spend several weeks building and presenting both a midterm and final project, applying learned concepts to create their own creative computer programs.
+Students will complete weekly homework assignments in the form of code "sketches." In addition, students will spend several weeks building and presenting both a midterm and final project, applying learned concepts to create their own creative computer programs.
 
 
 ## Course Outline
@@ -44,7 +44,7 @@ Students will complete weekly homework assignments. In addition, students will s
 |  09  | 10/26 | ofxAddons and computer vision              |
 |  10  | 11/02 | Meshes and 3D data (Kinect)                |                     
 |  11  | 11/09 | Shaders and rendering                   	|                     
-|  12  | 11/16 | Connectivity, interaction, and deploying	|                  
+|  12  | 11/16 | Connectivity, interaction, and deployment	|                  
 |  13  | 11/23 | **NO CLASS - THANKSGIVING**		        |
 |  14  | 11/30 | TBD: Machine learning primer?	AR/VR?		|
 |  15  | 12/07 | Final project workshop                    	|
@@ -125,9 +125,13 @@ There are a huge number of papers, books and examples online about algorithms an
 
 
 ##### Computer Vision
-In the second half of the semester, we will focus on the use of computer vision to create software that can "see".  We will primarily use the OpenCV library, the most popular platform for computer vision in C++.
+In the second half of the semester, we will focus on the use of computer vision to create software that can "see".  We will primarily use the OpenCV library, the most popular open-source platform for computer vision in C++.
 
-* [OpenCV] 
+* [OpenCV library](http://opencv.org/)
+* [ofxCv addon](https://github.com/kylemcdonald/ofxCv) by [Kyle McDonald](http://www.kylemcdonald.net/)
+* [learnopencv.com](https://www.learnopencv.com/) C++ tutorials and examples by Satya Mallick
+* [Learning OpenCV book](http://www-cs.ccny.cuny.edu/~wolberg/capstone/opencv/LearningOpenCV.pdf) by Gary Bradski and Adrian Kaehler
+
 
 ##### GLSL Shaders
 We will speak briefly about shaders and their implementation in OF. Here are some resources:
