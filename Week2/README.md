@@ -45,9 +45,9 @@ _To load these apps, use the git command: `git pull` to update your local copy o
 These apps just contain the code.  You need to use OF Project Generator to create the project in your IDE.  
 Open OF Project Generator, and click Import.  Then select the app folder (i.e. "bouncingBall").  Then click Update button, and open in IDE.
 
- - [**bouncingBall**](/bouncingBall) demonstrates how to create a Ball class
- - [**manyBouncingBalls**](/manyBouncingBalls) demos how to create a vector of Balls 
- - [**squareBalls**](/squareBalls) demos how to create a SquareBall class that _inherits_ from the Ball class
+ - **bouncingBall** demonstrates how to create a Ball class
+ - **manyBouncingBalls** demos how to create a vector of Balls 
+ - **squareBalls** demos how to create a SquareBall class that _inherits_ from the Ball class
 
 ## Homework:
 
