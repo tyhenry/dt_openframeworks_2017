@@ -14,7 +14,7 @@ void ofApp::update(){
     
     // mouse position alters gravity
     gravity.x = ofMap(ofGetMouseX(), 0, ofGetWidth(), -1, 1);
-    gravity.y = ofMap(ofGetMouseY(), 0, ofGetHeight(), -.1, 3);
+    gravity.y = ofMap(ofGetMouseY(), 0, ofGetHeight(), -1, 1);
 
 
 	ball1.update(gravity); // apply gravity to balls
