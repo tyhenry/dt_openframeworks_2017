@@ -2,7 +2,7 @@
 
 ## Code Examples
 
-* **BouncingBall** adding acceleration (gracity) to the old Bouncing Ball example
+* **BouncingBall** adding acceleration (gravity) to the old Bouncing Ball example
 * **Zeno** illustration of interpolation and "Zeno" easing technique
 * **MultiZeno** using ofMap to create a multicolor worm that follows the mouse
 
@@ -88,9 +88,9 @@ In oF, we could implement it this way:
 // ease ball position towards mouse using `Zeno` interpolation
 
 void update(){
-	// every frame, we will move a ball 90% of the way to a target
+	// every frame, we will move a ball 10% of the way to a target
 	
-	float pct = 0.9; 
+	float pct = 0.1; 
 	ofVec2f target;
 	target.x = ofGetMouseX(); // our target will be the mouse pos
 	target.y = ofGetMouseY();
@@ -103,7 +103,8 @@ void update(){
 
 ### Movement and Force
 
-We use vectors to represent both position, and movement (_velocity_).  
+We use vectors to represent both position, and movement, or _velocity_.  
+Here's how we might use velocity to change position over time. 
 
 ```c++
 ofVec2f position = ofVec2f(1,1); // start at (1,1)
@@ -117,17 +118,17 @@ void update() {
 ```
 
 When a **force** is applied to an object in motion, it changes the velocity of the object.  
-This is called **accelleration**, which we can also represent with an `ofVec2f`:
+This is called **acceleration**, which we can also represent with an `ofVec2f`:
 
 ```c++
-// create a downward accelleration force
+// create a downward acceleration force
 
 ofVec2f pos = ofVec2f(1,1);
 ofVec2f vel = ofVec2f(1,2);
 ofVec2f acc = ofVec2f(0,1); // adjust velocity by (0,1) each frame
 
 void update() { 
-	vel += acc;	// update velocity by accelleration
+	vel += acc;	// update velocity by acceleration
 	pos += vel;	// update position by velocity
 
 	//           frame 0   frame 1  frame 2
@@ -156,7 +157,7 @@ This will review the above concepts, and introduce more information that will be
 1. **Windy**  
 	Create a scene with multiple moving objects, like the old Bouncing Ball example.  Add a "wind" force that pushes your objects around the scene.  Now add multiple winds that change over time!
 
-2. **Moving Portrait**
+2. **Moving Portrait**  
 	Create a "self-portrait" using shapes and colors.  Use interpolation to animate the shapes in some way - perhaps the color changes over time, or in response to mouse movement... Get creative!
 
 3. Don't forget to **push** your sketches to your homework repo on GitHub **before class**:
