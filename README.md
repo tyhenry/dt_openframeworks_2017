@@ -11,6 +11,8 @@
 
 All course material will be posted to GitHub repo [tyhenry/dt_openframeworks_2017](https://github.com/tyhenry/dt_openframeworks_f17).  
 
+Student homework will be linked in the homework repo [tyhenry/dt_of_hw_2017](https://github.com/tyhenry/dt_of_hw_2017)
+
 
 _Credits:_
 _The content of this course is greatly indebted to [Regina Flores Mir](http://www.reginafloresmir.com/), professor of [AlgoSims2016](https://github.com/reginaflores/AlgoSims2016), my own incredible creative coding professors [Bryan Ma](http://bryan-ma.com/), [Bernardo Schorr](http://www.bernardoschorr.com/), and [Patricio Gonzalez Vivo](http://patriciogonzalezvivo.com/), as well as the work of [Zach Leiberman](http://sfpc.io/), and countless other contributors to the OpenFrameworks community._  
@@ -35,17 +37,18 @@ Students will complete weekly homework assignments in the form of code "sketches
 |:----:|:-----:|:-------------------------------------------|
 |  01  | 08/31 | Intro: OF community, Github, exploring C++	|
 |  02  | 09/07 | Drawing to screen, functions, classes, OOP |
-|  03  | 09/14 | Vectors, timing, movement, and forces		|         
-|  04  | 09/21 | Physics and steering behavior				|
-|  05  | 09/28 | Particles, noise, flow fields           	|                
-|  06  | 10/05 | Intro to 3D scenes, ofCamera			    |              
-|  07  | 10/12 | Real cameras, working with video 			|                 
-|  08  | 10/19 | **MIDTERM PROJECT PRESENTATIONS**         	|                   
-|  09  | 10/26 | ofxAddons and computer vision              |
-|  10  | 11/02 | Meshes and 3D data (Kinect)                |                     
-|  11  | 11/09 | Shaders and rendering                   	|                     
-|  12  | 11/16 | Connectivity, interaction, and deployment	|                  
-|  13  | 11/23 | **NO CLASS - THANKSGIVING**		        |
+|  03  | 09/14 | Vectors, movement, and forces		        |
+|  04  | 09/21 | **NO CLASS - ROSH HASHANAH**				|
+|  05  | 09/28 | Noise, oscillation, physics             	|
+|  06  | 10/05 | Particles, attraction, flow fields			|
+|  07  | 10/12 | Intro to 3D scenes, ofCamera 			    |
+|  08  | 10/19 | Real cameras, working with video         	|
+|  09  | 10/26 | **MIDTERM PROJECT PRESENTATIONS**          |
+|  10  | 11/02 | ofxAddons and computer vision              |
+|  11  | 11/09 | Meshes and 3D data (Kinect)                |
+|  12  | 11/16 | Shaders and rendering                  	|
+| -13  | 11/21 | **TUESDAY CLASS @ 7PM**  Deployment and UX |
+| -13  | 11/23 | **NO CLASS - THANKSGIVING**		        |
 |  14  | 11/30 | TBD: Machine learning primer?	AR/VR?		|
 |  15  | 12/07 | Final project workshop                    	|
 |  16  | 12/14 | **FINAL PROJECT PRESENTATIONS (Guest Crits)**	|
