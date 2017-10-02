@@ -56,9 +56,7 @@
 
 ## Review
 
-<a href="https://giphy.com/gifs/c4d-cinema4d-render-26BRvIYDe4ILO60Ni">
-<iframe src="https://giphy.com/embed/26BRvIYDe4ILO60Ni" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-</a>
+<img src="readme/3dnoise.gif" style="width:400px; height: 200px"/>
 
 ### `ofNoise()`: Order in Chaos
 
