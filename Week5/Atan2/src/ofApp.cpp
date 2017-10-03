@@ -50,30 +50,37 @@ void ofApp::draw(){
 	arrow.draw();
 	
 	
-	// draw the angle
+	// draw axes
 	
 	ofVec3f mousePos = ofVec3f(ofGetMouseX(), ofGetMouseY());
 	
 	ofSetColor(ofColor::red);
-	
 	ofDrawLine( arrow.pos, ofVec3f(ofGetWidth(), arrow.pos.y));	// x-axis
 	
 	ofSetColor(ofColor::green);
-	
 	ofDrawLine( arrow.pos, ofVec3f(arrow.pos.x, ofGetHeight())); // y-axis (points down!)
 	
-	ofSetColor(ofColor::lightBlue);
+	// draw arrow vector
 	
+	ofSetColor(ofColor::lightBlue);
 	ofDrawLine( mousePos, arrow.pos);							// direction vector
+	
+	// angle arc
 	
 	ofPolyline arc;
 	arc.arc(arrow.pos, 75, 75, 0, arrow.angle, true);
 	arc.draw();
 	
+	// angle labels
+	
 	float angle360 = arrow.angle;
 	if (angle360 < 0) angle360 = 360 + angle360; // shift negative degrees to 0-360 range
 	
-	ofDrawBitmapString( ofToString(angle360), arrow.pos + ofVec2f(75));
+	string degLbl = ofToString(angle360, 1) + " degrees";
+	string radLbl = ofToString(ofDegToRad(angle360) / PI, 2) + " PI radians";
+	
+	ofDrawBitmapString( degLbl, arrow.pos + ofVec2f(75, 75));
+	ofDrawBitmapString( radLbl, arrow.pos + ofVec2f(75, 90));
 	
 	ofSetColor(255);
 }
