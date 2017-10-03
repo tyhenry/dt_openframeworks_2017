@@ -68,6 +68,7 @@ void ofApp::draw(){
 	// draw wind vector
 	
 	ofVec3f center = ofVec2f(ofGetWidth()*.5, ofGetHeight()*.5);
+	ofDrawCircle( center, 5);
 	ofDrawLine( center, center + wind * 1000);
 
 }
