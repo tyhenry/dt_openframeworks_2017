@@ -26,11 +26,14 @@ void ofApp::setup(){
 		movers.push_back(mover);
 		
 	}
+	
+	bSpin = false;
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	
 	
 	ofVec2f mouse(ofGetMouseX(), ofGetMouseY());
 	
@@ -46,14 +49,50 @@ void ofApp::update(){
 		}
 		
 		movers[i].applyElastic();
+		
 		movers[i].applyDampingForce(0.05);
+		
 		movers[i].update();
+		
+		
+		
+		// add a circular spin (rotate the mover's orig pos and pos)
+		
+		float rotRad = .05;
+		
+		if (bSpin)
+		{
+			ofVec2f center	= ofGetWindowSize()*.5;
+			
+			// rotate origPos of Mover
+			
+			ofVec2f oVec	= movers[i].origPos - center;
+			float oTheta	= atan2(oVec.y, oVec.x) - rotRad;
+			float oRadius	= oVec.length();
+			
+			movers[i].origPos.x = center.x + (cos(oTheta) * oRadius);
+			movers[i].origPos.y = center.y + (sin(oTheta) * oRadius);
+			
+			// rotate pos of Mover
+			
+			ofVec2f vec		= movers[i].pos - center;
+			float theta		= atan2(vec.y, vec.x) - rotRad;
+			float radius	= vec.length();
+			
+			movers[i].pos.x = center.x + (cos(theta) * radius);
+			movers[i].pos.y = center.y + (sin(theta) * radius);
+			
+		}
+		
+		
 	}
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	
+	ofBackgroundGradient(ofColor::indigo, ofColor::orchid);
 	
 	for (int i=0; i<movers.size(); i++)
 	{
@@ -63,60 +102,21 @@ void ofApp::draw(){
 		}
 		movers[i].draw();
 	}
-
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
+	
+	// draw labels
+	
+	ofColor lblCol(0); // black
+	if (bSpin) lblCol = ofColor::darkRed;
+	ofDrawBitmapStringHighlight("space: toggle spin", ofVec2f(20,20), lblCol);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+	
+	if (key == ' ')
+	{
+		bSpin = !bSpin;	// toggle wind
+	}
 
 }
