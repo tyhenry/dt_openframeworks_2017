@@ -20,6 +20,7 @@ public:
 	
 	void applyForce(ofVec3f force);
 	void applyDampingForce(float force);
+	void checkEdges(); // keep Mover on screen
 	
 	void update();
 	void draw();

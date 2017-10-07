@@ -12,7 +12,7 @@ Mover::Mover()
 {
 	pos.set(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
 	
-	mass = ofRandom(5,20);
+	mass = ofRandom(1,5);
 }
 
 Mover::Mover(ofVec3f _pos, float _mass){
@@ -34,6 +34,30 @@ void Mover::applyDampingForce(float force)
 	
 }
 
+void Mover::checkEdges() {
+	// keep mover on screen
+	
+	if (pos.x < 0) {
+		pos.x = 0;
+		vel.x *= -1;
+	}
+	
+	if (pos.x > ofGetWidth()) {
+		pos.x = ofGetWidth();
+		vel.x *= -1;
+	}
+	
+	if (pos.y < 0) {
+		pos.y = 0;
+		vel.y *= -1;
+	}
+	
+	if (pos.y > ofGetHeight()) {
+		pos.y = ofGetHeight();
+		vel.y *= -1;
+	}
+}
+
 void Mover::update()
 {
 	vel += acc;
@@ -47,7 +71,20 @@ void Mover::draw()
 	ofPushMatrix();
 	ofTranslate(pos);
 	
+	ofPushStyle();
+	
+	// interpolate between colors!
+	ofColor cSlow	= ofColor::fromHex(0xC1D5FF);	// hex format: 0xRRGGBB
+	ofColor cFast	= ofColor::fromHex(0xFF4831);
+	
+	float pct		= ofMap(vel.length(), 0., 7., 0., 1., true);	// mix based on speed
+	ofColor cMix		= cSlow.lerp(cFast, pct);	// "lerp" == interpolate
+	
+	ofSetColor(cMix);
+	
 	ofDrawCircle(0,0, mass);
+	
+	ofPopStyle();
 	
 	ofPopMatrix();
 }

@@ -5,8 +5,8 @@ void ofApp::setup(){
 	
 	ofBackground(0);
 	
-	for (int y=0; y< ofGetHeight(); y+=50){
-		for (int x=0; x< ofGetWidth(); x+=50){
+	for (int y=0; y< ofGetHeight(); y+=20){
+		for (int x=0; x< ofGetWidth(); x+=20){
 			
 			Mover mover;
 			mover.pos = ofVec2f(x,y);
@@ -37,8 +37,10 @@ void ofApp::update(){
 		
 		movers[i].applyForce(attraction);
 		movers[i].applyForce(repulsion);
-		movers[i].applyDampingForce(0.01);
+		movers[i].applyDampingForce(0.05);
 		movers[i].update();
+		
+		movers[i].checkEdges();
 	}
 
 }
