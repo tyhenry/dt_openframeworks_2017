@@ -22,13 +22,21 @@
     
 ### Reading
 
-- [**The Nature of Code: Chapter 4 "Particle Systems"**](http://natureofcode.com/book/chapter-4-particle-systems/)
+**The Nature of Code**
 
-    Remember that **The Nature of Code** is written in the  Processing language, but the concepts are easily translated to C++/oF.
+- **[The Nature of Code: Chapter 2 Section 9 "Gravitaional Attraction"](http://natureofcode.com/book/chapter-2-forces/#chapter02_section9)**
+
+- **[The Nature of Code: Chapter 4 "Particle Systems"](http://natureofcode.com/book/chapter-4-particle-systems/)**
+
+    Remember that **The Nature of Code** is written in the Processing language (Java), but the concepts of physics-based animation are easily translated to C++/oF.
     
-- **Extra:**  
-    Check out Lewis Lepton's openFrameworks YouTube series.  It is designed for beginners, but covers some concepts we haven't yet seen, like addons, video, sound, and GUI controls.  [Here's the first episode on creating a GUI using ofxGUI](https://www.youtube.com/watch?v=X_is1x8iVtw&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=20)   
-    (Note that some of the episodes are ~2 years old, so some things like oF Project Generator will look a little different, but the principles are still relevant)
+**Extra:**  
+
+- Check out **Lewis Lepton's openFrameworks YouTube series**.  It is designed for beginners, but covers some concepts we haven't yet seen, like _ofxAddons_, video, sound, and GUI controls.
+
+    **[Here's the first episode on creating a GUI using ofxGUI](https://www.youtube.com/watch?v=X_is1x8iVtw&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=20)**
+
+    (Note that the older episodes are ~2 years old, so some things like oF Project Generator will look a little different, but the principles are still relevant)
     
 ## Example Code && Class Review
 
