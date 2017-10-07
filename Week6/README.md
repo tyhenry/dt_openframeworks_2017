@@ -5,6 +5,7 @@
 - **Attraction** - simple attraction force on Movers
 - **AttractionRepulsion** - create a grid of Movers, apply attraction and repulsion based on mouse
 - **Attractors** - create Attractor class, model gravity (see [Reading](#gravity))
+- **Elastic** - create an elastic force, particles spring back to starting point
 - **ParticleSystems** - create particle emitters with lifespans
 
 ## Homework
