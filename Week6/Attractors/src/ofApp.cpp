@@ -15,6 +15,7 @@ void ofApp::setup(){
 	
 	ofBackground(0);
 	ofSetBackgroundAuto(false);
+	ofSetFrameRate(60.);
 
 	// construct Movers and Attractors
 	
