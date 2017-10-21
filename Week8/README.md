@@ -42,7 +42,7 @@ If you have any questions about your project, please send me an e-mail  -
 
 + or feel free to explore techniques of your own choosing and interpretation!
   
-To load and draw images, check out [`ofImage()`](http://openframeworks.cc/documentation/graphics/ofImage/) in the openFrameworks docs 
+To load and draw images, check out [`ofImage()`](http://openframeworks.cc/documentation/graphics/ofImage/) in the openFrameworks docs ([further reading in ofBook](http://openframeworks.cc/ofBook/chapters/image_processing_computer_vision.html#preliminariestoimageprocessing))
     
     
 ### Interaction 
