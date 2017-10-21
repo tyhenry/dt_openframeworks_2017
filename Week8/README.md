@@ -6,6 +6,12 @@
 - **grid** - prototype an LED array on screen
 - **screenGrabGrid** - demo of capturing the screen and reading colors
 
+## Inspiration
+
+- **[Thomas Wilfred](https://www.google.com/search?tbm=isch&q=Thomas+Wilfred)**
+- **[Jim Campbell](https://www.vice.com/en_us/article/av43jz/jim-campbells-sculptural-led-light-installations)**
+
+
 ## Midterm app presentations: Thurs. Oct. 26th at 7pm
 
 **Your project ideas are great** - thanks for sharing them!
