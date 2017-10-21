@@ -1,12 +1,14 @@
 # Week 8
 
-## Example Projects 
+## Example projects 
 
 - **flowField** - particles flow over a 2D grid of forces / terrain
+- **flowFieldImage** - load an image as a flow field
 - **grid** - prototype an LED array on screen
 - **screenGrabGrid** - demo of capturing the screen and reading colors
+- **steering** - demo of "steering" behavior, where mover seeks a target
 
-## Inspiration
+## Some inspiration
 
 - **[Thomas Wilfred](https://www.google.com/search?tbm=isch&q=Thomas+Wilfred)**
 - **[Jim Campbell](https://www.vice.com/en_us/article/av43jz/jim-campbells-sculptural-led-light-installations)**
