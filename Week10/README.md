@@ -27,11 +27,11 @@
   
 * **MeshWebcam** (*based on in class example*)  
   Warp a mesh based on webcam input  
-  Also shows how to use `ofxGui` addon   
+  Also shows how to use `ofxGui` addon    
   ![screenshot](readme/MeshWebcam.jpg)
   
 * **3DSlitScan**  
-  Similar to `MeshWebcam` but uses slit-scan from webcam
+  Similar to `MeshWebcam` but uses slit-scan from webcam  
   ![screenshot](readme/3DSlitScan.jpg)
   
 * **Terrain**  
