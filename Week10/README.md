@@ -31,7 +31,7 @@
   ![screenshot](readme/MeshWebcam.jpg)
   
 * **3DSlitScan**  
-  Similar to `MeshWebcam` but uses slit-scan from webcam  
+  Similar to `MeshWebcam` but uses slit-scan from webcam  ~~~~
   ![screenshot](readme/3DSlitScan.jpg)
   
 * **Terrain**  
@@ -39,8 +39,11 @@
   Apply a painted texture and accurate lighting (using normals)  
   ![screenshot](readme/Terrain.jpg)
   
+* **Volcano**
+  Create a particle system using spheres and 3D physics  
+  ![screenshot](readme/VolcanoParticles.jpg)
+  
 * **Tyler TO-DO:**  
-  + 3D Particles
   + `ofPixels` example
 
 
