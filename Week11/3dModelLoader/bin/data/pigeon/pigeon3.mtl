@@ -1,0 +1,22 @@
+# Blender MTL File: 'pigeon.blend'
+# Material Count: 2
+
+newmtl Eyes1
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.157434 0.157434 0.157434
+Ks 0.737346 0.745378 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd eyes.png
+
+newmtl pigeon1
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.650005 0.650005 0.650005
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd pigeon.png
