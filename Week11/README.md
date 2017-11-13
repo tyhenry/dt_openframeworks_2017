@@ -2,20 +2,29 @@
 
 ## Example Sketches
 
-* **3dModelLoader**  - load and modify a 3D model mesh
+* **3dModelLoader**  
+  load and modify a 3D model mesh
     * uses ofxAssimpModelLoader addon
-    * loads OBJ format (PLY also works)
+    * loads OBJ format 3D model (PLY also works)
 
-* **backgroundSubtraction**  - "remove" the background from an image
+* **backgroundSubtraction**  
+  "remove" the background from an image
     * uses ofxOpenCv addon
 
-* **blobDetector**  - detection image regions based on brightness
+* **blendmodes**  
+  demos how to use ofBlendMode to achieve image blending
+
+* **blobDetector**  
+  detect image regions based on brightness
     * uses ofxOpenCv addon
 
-* **colorChannels**  - separate red, green, and blue channels of an image
+* **colorChannels**  
+  separate red, green, and blue channels of an image
 
-* **ofMeshFaces**  - demonstrates altering triangles of a mesh
+* **ofMeshFaces**  
+  demonstrates altering the triangle faces of a mesh
 
-* **pixelShifter**  - glitch-art, shifting locations of pixels in image
+* **pixelShifter**  
+  glitch-art, shifting locations of pixels in image
   
 
