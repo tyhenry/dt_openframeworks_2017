@@ -3,12 +3,19 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	
-	byte = new unsigned char;	// byte is a pointer to char
+	ofBackground(0);
 	
-	for (int i=0; i<300; i++)
-	{
-		byte[i] = 255;
-	}
+	// we're going to find a random point in our application memory
+	// and read the data at each byte to fill the screen
+	
+	bytePtr = new unsigned char[1];	// pointer to a byte of data in memory
+	*bytePtr = 255;					// set the value of this byte to 255
+	
+	// print the pointer address of the byte
+	
+	cout << (void*)bytePtr << endl;
+	
+	ofHideCursor();
 
 }
 
@@ -21,42 +28,66 @@ void ofApp::update(){
 void ofApp::draw(){
 	
 	
-	string label = "";
-	ofVec2f labelPos;
+	ofPushStyle();
 	
-	for (int y=0; y<ofGetHeight(); y+=10)
-	{
-		for (int x=0; x<ofGetWidth(); x+=10)
-		{
-			ofPushStyle();
+	// find a range of bytes in memory to draw as a pixel grid
 
-			int byteOffset = y * ofGetWidth() + x;
+	ofRectangle pixel;
+	pixel.setSize(20,20);
+	
+	int nCols = ofGetWidth() / pixel.width;		// fill the screen with 10x10 "pixel" boxes
+	int nRows = ofGetHeight() / pixel.height;
+	
+	int nBytes	= nCols * nRows;		// number of bytes we'll draw over the grid
+	int byteOffset = 0;					// we'll increment this by one for each pixel to get a new byte in memory
+	
+	for (int row = 0; row < nRows; row++)
+	{
+		for (int col = 0; col < nCols; col++, byteOffset++)			// increment byteOffset with columns
+		{
 			
-			// get pointer at this address
-			unsigned char * ptr = byte + byteOffset;
+			unsigned char * ptr = bytePtr + byteOffset;		// this byte's address = start address + offset
 			
-			// get value at this memory address
-			unsigned char val = *ptr;
+			// get value at this address, value range is 0 - 255
+			unsigned char val	= *ptr;
+			
+			// where to draw this "pixel" on screen
+			pixel.x = col * pixel.width;
+			pixel.y = row * pixel.height;
+			
+			// draw as a pixel with brightness of val
 			ofSetColor(val);
+			ofDrawRectangle(pixel);
 			
-			ofRectangle rect = ofRectangle(x,y,10,10);
-			ofDrawRectangle(rect);
-			
-			// if mouse is hovering this rectangle, print pointer address
-			if (rect.inside(ofGetMouseX(), ofGetMouseY()))
+			if (*ptr < 127)
 			{
-				label		= ofToString(ptr);
-				labelPos	= ofVec2f(x,y+10);
+				// byte is within ASCII range, so draw as text char
+				char ch = *ptr;
+				ofSetColor(255);
+				ofDrawBitmapString( ofToString(ch), pixel.x + 5, pixel.y + pixel.height - 5 );
 			}
-			
-			ofPopStyle();
 		}
 	}
+
+	ofPopStyle();
 	
-	if (!label.empty())
-	{
-		ofDrawBitmapStringHighlight(label, labelPos);
-	}
+	
+	// let's draw a label for the memory address our mouse is hovering
+	
+	int col = ofMap(ofGetMouseX(), 0, nCols * pixel.width, 0, nCols, true);
+	int row = ofMap(ofGetMouseY(), 0, nRows * pixel.height, 0, nRows, true);
+	
+	byteOffset = row * nCols + col;					// i = y * width + x
+	
+	unsigned char *ptr  = bytePtr + byteOffset;		// pointer
+	unsigned char val	= *ptr;						// * get value at pointer ("dereference" the pointer)
+	
+	stringstream label;
+	label << (void*)ptr << " -> " << int(val) << " " << ofToString(ptr);
+	
+	ofSetColor(ofColor::gray);
+	ofDrawRectangle(ofGetMouseX(),ofGetMouseY()-20,2,20);
+	ofDrawBitmapStringHighlight(label.str(), ofGetMouseX(), ofGetMouseY() - 20, ofColor::gray, ofColor::white);
 	
 	
 
@@ -69,6 +100,20 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+	
+	unsigned char * oldPtr = bytePtr;
+	
+	int nTries = 0;
+	do
+	{
+		delete bytePtr;
+		bytePtr = new unsigned char;
+		nTries++;
+	}
+	while (bytePtr == oldPtr);
+	
+	cout << "old ptr: " << (void*)oldPtr << " -> new ptr: " << (void*)bytePtr << " - took " << nTries << " tries to find a new allocation" << endl;
+	
 
 }
 

@@ -1,74 +1,136 @@
 #include "ofApp.h"
 
+const int width = 100;		// 100 pixels width
+const int height = 100;		// 100 pixels height
+const int nChannels = 4;	// RGBA color
+const int size = width * height * nChannels;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	
-	pixels.allocate(5,5,OF_IMAGE_COLOR_ALPHA);
+	// manually allocate a pixel array
+
+	/*
+	 to allocate using ofPixels we would write:
+	 
+	 ofPixels pixels;
+	 pixels.allocate(100,100,OF_IMAGE_COLOR_ALPHA);
+	 
+	 to manually allocate an array, we write:
+	*/
 	
-	// fill a 5 x 5 ofPixels object with random colors
-	// by looping through the pixel data:
+	pixelData = new unsigned char[ size ];		// new byte array with "size" # of elements
 	
-	for (int i=0; i<pixels.getTotalBytes(); i+=4)	// 4 bytes/channels per pixel
+	// log some info to the console on our array:
+	
+	ofLogNotice() << endl
+		<< "allocated pixel array at " << (void*)pixelData << " of size " << size << endl
+		<< width << "x" << height <<" * " << nChannels << " channels";
+	
+	
+	// fill our pixels with noise colors
+	
+	for (int i=0; i<size; i+=nChannels)			// 4 bytes/channels per pixel
 	{
-		pixels[i]		= ofRandom(255);	// red		- 1st byte/channel
-		pixels[i+1]		= ofRandom(255);	// green	- 2nd byte/channel
-		pixels[i+2]		= ofRandom(255);	// blue		- 3rd byte/channel
-		pixels[i+3]		= 255;				// alpha	- 4th byte/channel
+		int x = (i/nChannels) % width;			// pixel x
+		int y = (i/nChannels) / width;			// pixel y
+		
+		ofVec2f pos			= ofVec2f(x,y);
+		
+		pixelData[i]		= ofNoise(pos * 0.01 + 1000) * 255;	// red		- 1st byte/channel
+		pixelData[i+1]		= ofNoise(pos * 0.01 + 2000) * 255;	// green		- 2nd byte/channel
+		pixelData[i+2]		= ofNoise(pos * 0.01 + 3000) * 255;	// blue		- 3rd byte/channel
+		pixelData[i+3]		= ofNoise(pos * 0.01 + 4000) * 255;	// alpha		- 4th byte/channel
 	}
 
+	
+	// let's track these pixels using an ofImage
+	// the ofImage will store a pointer to our custom pixels
+	
+	img.getPixels().setFromExternalPixels(pixelData, width, height, nChannels);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	
+	// update our pixels with noise colors over time
 	
+	float time = ofGetElapsedTimef() * .1;
+	
+	for (int p=0; p<size; p+=nChannels)			// 4 bytes/channels per pixel
+	{
+		int x = (p/nChannels) % width;			// pixel x
+		int y = (p/nChannels) / width;			// pixel y
+		
+		ofVec2f pos			= ofVec2f(x,y) * 0.01;
+		
+		pixelData[p]		= ofNoise(pos.x,pos.y, time + 1000) * 255;	// red		- 1st byte/channel
+		pixelData[p+1]		= ofNoise(pos.x,pos.y, time + 2000) * 255;	// green		- 2nd byte/channel
+		pixelData[p+2]		= ofNoise(pos.x,pos.y, time + 3000) * 255;	// blue		- 3rd byte/channel
+		pixelData[p+3]		= ofNoise(pos.x,pos.y, time + 4000) * 255;	// alpha		- 4th byte/channel
+	}
+	
+	img.update();		// update the image texture with the new pixel values
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	
-	// we'll now access the ofPixels using a pointer to the raw data -
 	
-	// this is SAME as looping through pixels[i], like in setup()
-	// just using a different syntax!
+	ofPushMatrix();
+	ofPushStyle();
+	
+	float fitScale = ofGetWidth() / (width * 2.);
+	ofScale(ofVec3f(fitScale));	// enlarge drawings to fit window
 	
 	
-	for (int i=0; i<pixels.getTotalBytes(); i+=4)
+	// manually draw the pixels:
+	
+	for (int i=0; i<size; i+=4)		// 4 == numChannels
 	{
-		
-		unsigned char * pixData = pixels.getData() + i;
-
 		// read color at this pixel
+		
 		ofColor color;
-		color.r = pixData[0];		// offset pointer by 0, and dereference
-		color.g = pixData[1];		// offset by 1
-		color.b = pixData[2];
-		color.a = pixData[3];
+		color.r = pixelData[i];		// offset pointer by i, get value
+		color.g = pixelData[i+1];	// offset by i+1
+		color.b = pixelData[i+2];
+		color.a = pixelData[i+3];
 		
 		// calculate the x,y position at this byte
-		int x = (i/4) % pixels.getWidth();
-		int y = (i/4) / pixels.getWidth();
+		int x = (i/4) % width;
+		int y = (i/4) / width;
 		
-		// draw the pixel as a large box
+		// draw the pixel as a box
 		ofSetColor(color);
-		ofDrawRectangle(x*200,y*100,200,100);
-		
-		// draw label with pointer addresses and values
-		stringstream label;
-		label
-			<< "address: " <<(void *)(pixData) << endl	// hack to print raw hex
-			<< " [0] " << (int)color.r << "\t(r)\n"
-			<< " [1] " << (int)color.r << "\t(g)\n"
-			<< " [2] " << (int)color.r << "\t(b)\n"
-			<< " [3] " << (int)color.r << "\t(a)";
-
-		ofDrawBitmapStringHighlight(label.str(), x*200+20, y*100+20);
+		ofDrawRectangle(x,y,1,1);
 		
 	}
 	ofSetColor(255);
 	
+	// auto-draw the pixels using an image texture:
+	
+	img.draw(width, 0, width, height);
+	
+	ofPopStyle();
+	ofPopMatrix();	// end scaling
+	
+	
+	// add labels
+	
+	stringstream pixLabel;
+	pixLabel
+		<< "pixels: unsigned char [" << size << "] @ " << (void*)pixelData << endl
+		<< width << " x " << height << " * " << nChannels << " channels";
+	ofDrawBitmapString(pixLabel.str(),20,height*fitScale+20);
+	
+	stringstream texLabel;
+	texLabel
+		<< "texture loaded from pixels" << endl
+		<< "scaled to " << width * fitScale << " x " << height * fitScale;
+	ofDrawBitmapString(texLabel.str(),width*fitScale+20, height*fitScale+20);
 	
 	
 
@@ -81,6 +143,10 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+	
+	// invert colors when key is pressed
+	
+//	for (int i=0; i<pix)
 
 }
 

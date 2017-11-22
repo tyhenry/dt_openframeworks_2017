@@ -22,7 +22,7 @@ public:
 	void gotMessage(ofMessage msg);
 	
 	
-	ofPixels pixels;
-	unsigned char * pixelData;
+	unsigned char * pixelData;		// raw pixel data
+	ofImage img;
 		
 };

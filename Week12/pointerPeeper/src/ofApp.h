@@ -21,6 +21,6 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	
-	unsigned char * byte;
+	unsigned char * bytePtr;
 		
 };
