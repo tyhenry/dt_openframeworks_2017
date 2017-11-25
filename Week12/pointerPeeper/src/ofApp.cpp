@@ -8,15 +8,13 @@ void ofApp::setup(){
 	// we're going to find a random point in our application memory
 	// and read the data at each byte to fill the screen
 	
-	bytePtr = new unsigned char[1];	// pointer to a byte of data in memory
+	bytePtr = new unsigned char;	// pointer to a byte of data in memory
 	*bytePtr = 255;					// set the value of this byte to 255
 	
 	// print the pointer address of the byte
 	
-	cout << (void*)bytePtr << endl;
+	cout << "starting pointer address: " << (void*)bytePtr << endl;
 	
-	ofHideCursor();
-
 }
 
 //--------------------------------------------------------------
@@ -85,11 +83,13 @@ void ofApp::draw(){
 	stringstream label;
 	label << (void*)ptr << " -> " << int(val) << " " << ofToString(ptr);
 	
-	ofSetColor(ofColor::gray);
+	ofSetColor(ofColor::darkBlue);
 	ofDrawRectangle(ofGetMouseX(),ofGetMouseY()-20,2,20);
-	ofDrawBitmapStringHighlight(label.str(), ofGetMouseX(), ofGetMouseY() - 20, ofColor::gray, ofColor::white);
+	ofDrawBitmapStringHighlight(label.str(), ofGetMouseX(), ofGetMouseY() - 20, ofColor::darkBlue, ofColor::white);
 	
-	
+	stringstream cornerLbl;
+	cornerLbl << "starting address: " << (void*)bytePtr << "\npress any key to find a new address";
+	ofDrawBitmapStringHighlight(cornerLbl.str(), 20,20, ofColor::darkBlue, ofColor::white);
 
 }
 
